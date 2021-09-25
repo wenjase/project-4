@@ -1,0 +1,19 @@
+<h2>
+    {{artist.name}} <a href="{% url 'artist_edit' pk=artist.pk %}">(edit)</a>
+    </h2>
+    <h4>
+    {{artist.nationality}}
+    </h4>
+    
+    <a href="{% url 'user_delete' pk=user.pk %}">Delete</a>
+    
+    <h3>Songs <a href="">(+)</a></h3>
+    <ul>
+        {% for user in users.all %}
+        <li>
+            <a href="{% url 'user_detail' pk=user.pk %}">
+                {{ user.username }} -- {{user.password}} 
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
