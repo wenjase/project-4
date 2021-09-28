@@ -5,12 +5,18 @@ from django.db import models
 class User(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=15)
+    
     def __str__(self):
-        return self.username
+        return str(self.username)
 
 
 
 class Question(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='questions'
+    )
     question = models.TextField(max_length=1000)
 
     def __str__(self):
