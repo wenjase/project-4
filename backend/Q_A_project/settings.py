@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Q_A',
     'rest_framework',
+    'corsheader',
 ]
 
 REST_FRAMEWORK = {

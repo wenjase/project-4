@@ -7,3 +7,11 @@
     </li>
     {% endfor %}
 </ul>
+
+<ul>
+    {% for question in questions %}
+    <li>
+        <a href="{% url 'question_detail' pk=question.pk %}"></a>
+    </li>
+    {% endfor %}
+</ul>
