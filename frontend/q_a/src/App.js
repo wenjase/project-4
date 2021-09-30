@@ -1,11 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import Post from './components/Post';
+import {Nav, Footer, About, Contact, Home} from "./components/Routes"
+import { Route,Switch } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <Post />
+      <Nav />
+      <Switch>
+        <Route path='/' exact component={() => <Home />} />
+        <Route path='/about' exact component={() => <About />} />
+        <Route path='/contact' exact component={() => <Contact />} />
+      </Switch>
+      <Footer />
     </div>
   );
 }
