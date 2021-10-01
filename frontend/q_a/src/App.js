@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {Nav, Footer, About, Contact, Home} from "./components/Routes"
+import {Nav, Footer, About, Contact, Home, Answer} from "./components/Routes"
 import { Route,Switch } from 'react-router-dom'
 
 function App() {

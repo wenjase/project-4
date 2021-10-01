@@ -12,11 +12,11 @@ class User(models.Model):
 
 
 class Question(models.Model):
-    # user = models.ForeignKey(
-    #     User,
-    #     on_delete=models.CASCADE,
-    #     related_name='question'
-    # )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='ask'
+    )
     question = models.TextField(max_length=1000)
 
     def __str__(self):
@@ -28,7 +28,7 @@ class Answer(models.Model):
     question = models.ForeignKey(
         Question,
         on_delete=models.CASCADE,
-        related_name='answer'
+        related_name='answerfields'
     )
     answer = models.TextField(max_length=1000)
 

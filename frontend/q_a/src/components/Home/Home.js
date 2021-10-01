@@ -16,7 +16,7 @@ function Home(props) {
   "headers": {
     "content-type": "application/json",
   },
-  "body": JSON.stringify({question:question, "csrfmiddlewaretoken": "mTqdPljNmlWUekEY3VQPgGuMyHtxYs0FavJmT5hhbB2APAQukPmmhQqj8OQhUdAy"}),
+  "body": JSON.stringify({question:question}),
   "method": "POST",
 //   "mode": "cors",
 //   "credentials": "include"
@@ -37,11 +37,23 @@ useEffect(() => {
 
 }, [])
 
+useEffect(() => {
+    fetch('http://localhost:8000/answers/')
+    .then(res => res.json())
+    .then(res => {
+        setAnswers(res)
+        console.log(res)
+    })
+
+}, [])
+
+
 
 const handleChange = (e) => {
     console.log(e.target.value)
     setQuestion(e.target.value)
 }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -57,10 +69,17 @@ const handleChange = (e) => {
                     ))}
                     
                     </div>
-            <form>
-            </form>        
-
-                
+            <form onSubmit={handleSubmit}>
+                <input name='answer' type='text' onChange={handleChange} />
+                <input type='submit' />
+            </form>
+            <div className="answer">
+                    {answers && (
+                        answers.map((answer) => {
+                            return (<h2>{answer.answer}</h2>)
+                        })
+                    )}
+                </div>
         </div>
     );
 }
