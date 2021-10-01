@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from 'react';
 
 function Home(props) {
 
    const [question, setQuestion] = useState("")
+   const [questions, setQuestions] = useState([])
+   const [answer, setAnswer] = useState("")
+   const [answers, setAnswers] = useState([]) 
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         try{
-        fetch("http://localhost:8001/questions/", {
+        fetch("http://localhost:8000/questions/", {
   "headers": {
     "content-type": "application/json",
   },
@@ -21,6 +26,18 @@ function Home(props) {
     console.log("err")
 }
     }
+
+useEffect(() => {
+    fetch('http://localhost:8000/questions/')
+    .then(res => res.json())
+    .then(res => {
+        setQuestions(res)
+        console.log(res)
+    })
+
+}, [])
+
+
 const handleChange = (e) => {
     console.log(e.target.value)
     setQuestion(e.target.value)
@@ -28,9 +45,22 @@ const handleChange = (e) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input name='question' type='text' onChange={handleChange}/>
+                <input name='question' type='text' onChange={handleChange} color='gray' />
                 <input type='submit' />
             </form>
+            {/* mapping through to display information */}
+            <div className="question">
+            {questions && (
+                    questions.map((question) => {
+                      return  (<h2>{question.question}</h2>)
+                    }
+                    ))}
+                    
+                    </div>
+            <form>
+            </form>        
+
+                
         </div>
     );
 }
