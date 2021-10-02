@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import React from 'react';
+// import axios from 'axios';
 
 function Home(props) {
 
    const [question, setQuestion] = useState("")
    const [questions, setQuestions] = useState([])
+//    const [user, setUser] = useState("")
 //    const [answer, setAnswer] = useState("")
 //    const [answers, setAnswers] = useState([]) 
+
+// async function handleSubmit() {
+//     axios.post('http://localhost:8000/questions/', {
+//         user: user.id,
+//         question:question
+//     })
+// }
 
 
     const handleSubmit = (e) => {
