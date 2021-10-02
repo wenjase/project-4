@@ -5,8 +5,8 @@ function Home(props) {
 
    const [question, setQuestion] = useState("")
    const [questions, setQuestions] = useState([])
-   const [answer, setAnswer] = useState("")
-   const [answers, setAnswers] = useState([]) 
+//    const [answer, setAnswer] = useState("")
+//    const [answers, setAnswers] = useState([]) 
 
 
     const handleSubmit = (e) => {
@@ -16,7 +16,7 @@ function Home(props) {
   "headers": {
     "content-type": "application/json",
   },
-  "body": JSON.stringify({question:question}),
+  "body": JSON.stringify({question:question, "csrfmiddlewaretoken": "mTqdPljNmlWUekEY3VQPgGuMyHtxYs0FavJmT5hhbB2APAQukPmmhQqj8OQhUdAy"}),
   "method": "POST",
 //   "mode": "cors",
 //   "credentials": "include"
@@ -37,15 +37,15 @@ useEffect(() => {
 
 }, [])
 
-useEffect(() => {
-    fetch('http://localhost:8000/answers/')
-    .then(res => res.json())
-    .then(res => {
-        setAnswers(res)
-        console.log(res)
-    })
+// useEffect(() => {
+//     fetch('http://localhost:8000/answers/')
+//     .then(res => res.json())
+//     .then(res => {
+//         setAnswers(res)
+//         console.log(res)
+//     })
 
-}, [])
+// }, [])
 
 
 
@@ -69,7 +69,7 @@ const handleChange = (e) => {
                     ))}
                     
                     </div>
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
                 <input name='answer' type='text' onChange={handleChange} />
                 <input type='submit' />
             </form>
@@ -79,7 +79,7 @@ const handleChange = (e) => {
                             return (<h2>{answer.answer}</h2>)
                         })
                     )}
-                </div>
+                </div> */}
         </div>
     );
 }
